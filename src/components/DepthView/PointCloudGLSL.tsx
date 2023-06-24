@@ -46,9 +46,8 @@ function videoToDepthTexture(
   const pixels = depthTexture.image.data;
 
   for (let i = 0; i < imageData.data.length; i += 4) {
-    const depth = (imageData.data[i] << 8) + imageData.data[i + 1]; // Convert two 8-bit values to a single 16-bit value
-    pixels[i] = depth / 256; // Red channel: high 8 bits
-    pixels[i + 1] = depth % 256; // Green channel: low 8 bits
+    pixels[i] = imageData.data[i]; // Red channel: high 8 bits
+    pixels[i + 1] = imageData.data[i + 1]; // Green channel: low 8 bits
     pixels[i + 2] = 0; // Blue channel: not used
     pixels[i + 3] = 1.0; // Alpha channel: fully opaque
   }

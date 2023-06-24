@@ -15,17 +15,19 @@ export const DepthView: React.FC<DepthViewProps> = (props) => {
   return (
     <div>
       <video ref={videoRef} autoPlay playsInline />
-      <Canvas>
-        {cameraParameters ? (
-          <PointCloudGLSL
-            depthVideoRef={videoRef}
-            colorVideoRef={colorVideoRef}
-            depthSize={videoSize || { width: 640, height: 480 }}
-            colorSize={colorVideoSize || { width: 640, height: 480 }}
-            parameters={cameraParameters}
-          />
-        ) : null}
-      </Canvas>
+      <div style={{ width: "50vw", height: "50vh" }}>
+        <Canvas flat linear>
+          {cameraParameters ? (
+            <PointCloudGLSL
+              depthVideoRef={videoRef}
+              colorVideoRef={colorVideoRef}
+              depthSize={videoSize || { width: 640, height: 480 }}
+              colorSize={colorVideoSize || { width: 640, height: 480 }}
+              parameters={cameraParameters}
+            />
+          ) : null}
+        </Canvas>
+      </div>
     </div>
   );
 };
