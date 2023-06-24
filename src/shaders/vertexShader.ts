@@ -112,8 +112,9 @@ void main() {
                              / u_depth_texture_size;
     // The values of R, G and B should be equal, so we can just
     // select any of them.
-    float depth = texture2D(u_depth_texture,
-                            depth_texture_coord).r;
+    vec4 texel = texture2D(u_depth_texture,
+                            depth_texture_coord);
+    float depth = texel.r * 256.0 + texel.g;
     // For example, a value of 1.5 means the current point is 1.5
     // meters away.
     float depth_scaled = u_depth_scale * depth;

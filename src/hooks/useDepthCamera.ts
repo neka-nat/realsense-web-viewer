@@ -6,7 +6,9 @@ export const useDepthCamera = () => {
   const [cameraParameters, setCameraParameters] = useState<
     CameraParameters | undefined
   >(undefined);
-  const [videoSize, setVideoSize] = useState<{ width: number; height: number } | undefined>(undefined);
+  const [videoSize, setVideoSize] = useState<
+    { width: number; height: number } | undefined
+  >(undefined);
 
   useEffect(() => {
     async function getCameraStream() {
@@ -32,8 +34,11 @@ export const useDepthCamera = () => {
             setCameraParameters(cameraParameters);
             videoRef.current.srcObject = stream;
             videoRef.current.onloadedmetadata = () => {
-              setVideoSize({ width: videoRef.current!.videoWidth, height: videoRef.current!.videoHeight });
-            }
+              setVideoSize({
+                width: videoRef.current!.videoWidth,
+                height: videoRef.current!.videoHeight,
+              });
+            };
           } else {
             console.error("RealSense camera not found");
           }

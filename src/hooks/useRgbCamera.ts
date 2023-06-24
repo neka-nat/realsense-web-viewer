@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 export const useRgbCamera = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [videoSize, setVideoSize] = useState<{ width: number; height: number } | undefined>(undefined);
+  const [videoSize, setVideoSize] = useState<
+    { width: number; height: number } | undefined
+  >(undefined);
 
   useEffect(() => {
     async function getCameraStream() {
@@ -34,8 +36,11 @@ export const useRgbCamera = () => {
             );
             videoRef.current.srcObject = stream;
             videoRef.current.onloadedmetadata = () => {
-              setVideoSize({ width: videoRef.current!.videoWidth, height: videoRef.current!.videoHeight });
-            }
+              setVideoSize({
+                width: videoRef.current!.videoWidth,
+                height: videoRef.current!.videoHeight,
+              });
+            };
           }
         } catch (err) {
           console.error("Error accessing camera:", err);
