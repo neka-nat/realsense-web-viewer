@@ -49,7 +49,7 @@ function videoToDepthTexture(
     pixels[i] = imageData.data[i]; // Red channel: high 8 bits
     pixels[i + 1] = imageData.data[i + 1]; // Green channel: low 8 bits
     pixels[i + 2] = 0; // Blue channel: not used
-    pixels[i + 3] = 1.0; // Alpha channel: fully opaque
+    pixels[i + 3] = 255; // Alpha channel: fully opaque
   }
   depthTexture.needsUpdate = true;
   return depthTexture;
