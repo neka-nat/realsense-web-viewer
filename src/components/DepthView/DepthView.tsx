@@ -15,6 +15,7 @@ export const DepthView: React.FC<DepthViewProps> = (props) => {
   return (
     <div>
       <video ref={videoRef} autoPlay playsInline hidden />
+      <video ref={colorVideoRef} autoPlay playsInline hidden />
       <div style={{ width: "50vw", height: "50vh" }}>
         <Canvas flat linear>
           <group rotation-z={1.57} rotation-y={0.0} rotation-x={1.57}>
