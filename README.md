@@ -8,3 +8,5 @@ cd realsense-web-viewer
 yarn install
 yarn start
 ```
+
+![demo](demo.gif)
