@@ -10,6 +10,8 @@ export const useRgbCamera = () => {
     async function getCameraStream() {
       if (videoRef.current) {
         try {
+          // まず、カメラへのアクセス許可をユーザーに求める
+          await navigator.mediaDevices.getUserMedia({ video: true });
           const devices = await navigator.mediaDevices.enumerateDevices();
           const realsenseCamera = devices.filter(
             (device) =>
